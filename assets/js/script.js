@@ -1,12 +1,12 @@
 // Create quiz
-var startQuizEl = document.querySelector("#start-quiz-");
-var startQuizBtnEl = document.querySelector("#start-quiz-btn");
+var startEl = document.querySelector("#start");
+var startBtn = document.querySelector("#start-btn");
 var timerEl = document.querySelector("#timer");
-var quizQuestionEl = document.querySelector("#quiz-questions");
+var questionEl = document.querySelector("#question");
 var restartEl = document.querySelector("#resart")
 var scoreEl = document.querySelector("#score"); 
 var answerEl = document.querySelector("#the-answer");
-var quizEl = document.querySelector("#quiz")
+var testEl = document.querySelector("test")
 
 // Get High Score
 var highNameEl = document.querySelector('#high-score-name')
@@ -58,7 +58,7 @@ function beginQuiz() {
 
 function displayMain() {
     startQuizEl.setAttribute("class", "hidden");
-    quizEl.setAttribute("class", "quiz-questions")
+    testEl.setAttribute("class", "test")
 }
 
 var gameTime;
@@ -77,6 +77,44 @@ function timeStart() {
     },1000)
 }
 
+// used to reset the game html after playing
+function restartQuiz(){
+    testEl.setAttribute("class", "hidden");
+    startEl.setAttribute("class", "start");
+    answerEl.setAttribute("class", "hidden")
+    clearInterval(gameTime);
+    timerEl.textContent = 60;
+    
+}
+
+// Var to pull playerscore from storage. Just wanted it closer so you can see it.
+var playerScore = localStorage.getItem('playerScore');
+var highScore = localStorage.getItem('highScore')
+
+//Set high score but i cant get timeStart function to call setHighScore
+function setHighScore(){
+ if(counter > localStorage.getItem('highScore') ){
+    localStorage.setItem('highScore', counter);
+    var highScoreName = window.prompt("New High Score! Please enter your name");
+    localStorage.setItem('highScoreName', [highScoreName]);
+    highEl.textContent = localStorage.getItem('highScore')
+    highNameEl.textContent = localStorage.getItem('highScoreName')
+  }else{    
+    console.log('why is it not?')
+}   
+}
+
+//pulls question and displays it
+function itterateQuestion(){
+if(currentQ < QnA.length){
+    questionEl.textContent = QnA[currentQ].question;
+    for(i=0;i<optionsEl.length;i++){
+        optionsEl[i].textContent = QnA[currentQ].options[i]
+    }
+}
+currentQ++;
+}
+
 //checks to see if question was right or wrong
 function checkAndItterate(){
     var prevA = this.textContent;
@@ -92,7 +130,7 @@ function checkAndItterate(){
 }
 
 //Event listeners and Invocations
-startQuizBtn.addEventListener("click", beginQuiz)
+startBtn.addEventListener("click", startBtn)
 optionsEl.forEach(element=>{
     element.addEventListener("click", checkAndItterate);
 })
