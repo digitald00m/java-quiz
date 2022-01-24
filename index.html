@@ -5,28 +5,73 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JavaScript Quiz</title>
+    <title>JAVA QUIZ</title>
     <link rel="stylesheet" href="./assets/css/style.css">
 </head>
 
 <body>
   
   <header>
-    <h1 class="page-title">Take the timed quiz </h1>
-    <p>Click the button below to start the quiz</p>
-    <form id="test-form">
-      <div class="form-group">
-        <button class="btn" id="save-task" type="submit">Start</button>
-      </div>
-    </form>
+    <h1 class="page-title">Java Quiz!</h1>
+    <!--Score and Time Section-->
+    <section class="score-time" id= "score-time">
+    <div class="Scores">
+      <span>Score: </span>
+      <span id="score">0</span>
+    </div>
+    <div class="Time" id="Time">
+      <span>Time: </span>
+      <span id="timer">60</span>
+    </div>
+    </section>
   </header>
 
-  <main class="page-content" id="page-content">
-      
-  </main>
+  <!-- Insert Quiz Questions Here -->
+  <section class="hidden" id="quiz-questions">
+    <div class="answer-list" id="answer-list">
+        <div class="options-container" id="A">                  
+            <p class="option-text" ></p>
+        </div>
+        <div class="options-container" id="A">                   
+            <p class="option-text" ></p>
+        </div>
+        <div class="options-container" id="A">                 
+            <p class="option-text" ></p>
+        </div>
+        <div class="options-container" id="A">                
+            <p class="option-text" ></p>
+        </div>
+    </div>
+  </section>
+
+  <section class="start-quiz" id="start-quiz">
+    <div class="start-quiz">
+      <span id="ready">6 questions in 60 seconds.</span>
+      <span id="ready">Ready to put your skills to the test?</span>
+    </div>
+  </br>
+    <div class="btn">
+      <button class="start-quiz-btn" id="start-quiz-btn" type="">Start Quiz</button>
+    </div>
+    <div class="correct" id="correct">
+      <span id="the-answer"></span>
+    </div>
+  </section>
 
   <footer>
-    Made With Life by Digitald00m
+    <nav>
+      <ul>
+        <li>
+          <span id="high" class="high" >High Score:</span>
+          <span id="high-score"></span>
+          <span id="high-score-name"></span>
+        </li>
+        <li>
+          <span id="restart" class="restart" >Restart</span>
+        </li>
+      </ul>
+  </nav>
+  <h2 class="footer-header" id="footer-header">Made With Life 🧬 by Digitald00m</h2>
   </footer>
 
   <script src="./assets/js/script.js"></script>   
